@@ -63,7 +63,7 @@ const CanvasComponent = () => {
 
   const AddImage = () => {
     var crossImg = new Image();
-    crossImg.onload = function (img) {
+    crossImg.onload = function () {
       var cross = new fabric.FabricImage(crossImg, {
         left: 300,
         top: 150,
