@@ -254,7 +254,6 @@ const CanvasComponent = () => {
                 />
               </label>
             )}
-            {selectedObject.type === 'rect' && (
               <label>
                 Fill:
                 <input
@@ -264,7 +263,6 @@ const CanvasComponent = () => {
                   onChange={handleInputChange}
                 />
               </label>
-            )}
           </div>
         )}
       </div>
