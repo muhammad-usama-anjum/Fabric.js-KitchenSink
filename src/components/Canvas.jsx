@@ -14,7 +14,8 @@ const CanvasComponent = () => {
     fill: "",
     radius: "",
     stroke: "",
-    textBackgroundColor: ""
+    textBackgroundColor: "",
+    fontSize:""
   });
 
   useEffect(() => {
@@ -33,7 +34,8 @@ const CanvasComponent = () => {
         fill: obj.fill,
         radius: obj.radius || "",
         stroke: obj.stroke || "",
-        textBackgroundColor: obj.textBackgroundColor || ""
+        textBackgroundColor: obj.textBackgroundColor || "",
+        fontSize: obj.fontSize
       });
     };
 
@@ -57,7 +59,8 @@ const CanvasComponent = () => {
         fill: "",
         radius: "",
         stroke: "",
-        textBackgroundColor: ""
+        textBackgroundColor: "",
+        fontSize:""
       });
     });
 
@@ -84,7 +87,8 @@ const CanvasComponent = () => {
         fill: details.fill,
         radius: details.radius || selectedObject.radius,
         stroke: details.stroke || selectedObject.stroke,
-        textBackgroundColor: details.textBackgroundColor || selectedObject.textBackgroundColor
+        textBackgroundColor: details.textBackgroundColor || selectedObject.textBackgroundColor,
+        fontSize: details.fontSize
       });
       fabricCanvasRef.current.renderAll();
     }
@@ -164,7 +168,8 @@ const CanvasComponent = () => {
       fill: "",
       radius: "",
       stroke: "",
-      textBackgroundColor: ""
+      textBackgroundColor: "",
+      fontSize:""
     });
   };
 
@@ -250,6 +255,17 @@ const CanvasComponent = () => {
                   type="text"
                   name="textBackgroundColor"
                   value={details.textBackgroundColor}
+                  onChange={handleInputChange}
+                />
+              </label>
+            )}
+            {selectedObject.type === 'text' && (
+              <label>
+                Font Size:
+                <input
+                  type="number"
+                  name="fontSize"
+                  value={details.fontSize}
                   onChange={handleInputChange}
                 />
               </label>
