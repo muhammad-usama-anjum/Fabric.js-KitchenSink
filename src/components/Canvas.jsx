@@ -190,6 +190,7 @@ const CanvasComponent = () => {
         {selectedObject && (
           <div className="details">
             <h3>Selected Object Details</h3>
+            {selectedObject.type === 'rect' && (
             <label>
               Width:
               <input
@@ -199,6 +200,8 @@ const CanvasComponent = () => {
                 onChange={handleInputChange}
               />
             </label>
+            )}
+              {selectedObject.type === 'rect' && (
             <label>
               Height:
               <input
@@ -208,6 +211,7 @@ const CanvasComponent = () => {
                 onChange={handleInputChange}
               />
             </label>
+              )}
             <label>
               Top:
               <input
