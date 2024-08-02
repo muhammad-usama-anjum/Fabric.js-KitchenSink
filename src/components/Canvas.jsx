@@ -160,16 +160,20 @@ const CanvasComponent = () => {
   const AddImage = () => {
     const crossImg = new Image();
     crossImg.onload = function () {
+      const minScale = 0.5;
+      const maxScale = 2; // Max scale value
+  
       const cross = new fabric.Image(crossImg, {
         left: getRandomInt(0, 700), // Ensure it stays within the canvas
         top: getRandomInt(0, 450), // Ensure it stays within the canvas
-        scaleX: Math.random() * 2, // Random scale
-        scaleY: Math.random() * 2, // Random scale
+        scaleX: minScale + Math.random() * (maxScale - minScale), // Random scale greater than 0.5
+        scaleY: minScale + Math.random() * (maxScale - minScale), // Random scale greater than 0.5
       });
       fabricCanvasRef.current.add(cross);
     };
     crossImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDrKL3RBmogp-LQGw48bJ6KHjMgjWwmLFpcQ&s";
   };
+  
   const ClearCanvas = () => {
     fabricCanvasRef.current.clear();
     setSelectedObject(null);
