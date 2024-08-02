@@ -79,18 +79,27 @@ const CanvasComponent = () => {
 
   const updateObjectDetails = () => {
     if (selectedObject) {
-      selectedObject.set({
-        width: parseFloat(details.width) / selectedObject.scaleX,
-        height: parseFloat(details.height) / selectedObject.scaleY,
-        top: parseFloat(details.top),
-        left: parseFloat(details.left),
-        fill: details.fill || "black", // Default fill if empty
-        stroke: details.fill ? "" : "black",
-        radius: details.radius || selectedObject.radius,
-        stroke: details.stroke || selectedObject.stroke,
-        textBackgroundColor: details.textBackgroundColor || selectedObject.textBackgroundColor,
-        fontSize: details.fontSize
-      });
+      if (selectedObject.type === "text") {
+        selectedObject.set({
+          fontSize: parseFloat(details.fontSize) || 0,
+          textBackgroundColor: details.textBackgroundColor || selectedObject.textBackgroundColor,
+        });
+        if (selectedObject.fontSize === 0) {
+          selectedObject.set({ visible: false });
+        } else {
+          selectedObject.set({ visible: true });
+        }
+      } else {
+        selectedObject.set({
+          width: parseFloat(details.width) / selectedObject.scaleX,
+          height: parseFloat(details.height) / selectedObject.scaleY,
+          top: parseFloat(details.top),
+          left: parseFloat(details.left),
+          fill: details.fill || "black", // Default fill if empty
+          stroke: details.stroke || selectedObject.stroke,
+          radius: details.radius || selectedObject.radius,
+        });
+      }
       selectedObject.setCoords();
       fabricCanvasRef.current.renderAll();
     }
