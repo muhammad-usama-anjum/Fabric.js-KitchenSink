@@ -147,7 +147,7 @@ const CanvasComponent = () => {
   };
 
   const AddText = () => {
-    const text = new fabric.Text("Hello fabric.js", {
+    const text = new fabric.FabricText("Hello fabric.js", {
       fill: getRandomColor(),
       fontSize: getRandomInt(16, 40), // Random font size
       top: getRandomInt(0, 450), // Ensure it stays within the canvas
@@ -163,7 +163,7 @@ const CanvasComponent = () => {
       const minScale = 0.5;
       const maxScale = 2; // Max scale value
   
-      const cross = new fabric.Image(crossImg, {
+      const cross = new fabric.FabricImage(crossImg, {
         left: getRandomInt(0, 700), // Ensure it stays within the canvas
         top: getRandomInt(0, 450), // Ensure it stays within the canvas
         scaleX: minScale + Math.random() * (maxScale - minScale), // Random scale greater than 0.5
