@@ -84,7 +84,8 @@ const CanvasComponent = () => {
         height: parseFloat(details.height) / selectedObject.scaleY,
         top: parseFloat(details.top),
         left: parseFloat(details.left),
-        fill: details.fill,
+        fill: details.fill || "black", // Default fill if empty
+        stroke: details.fill ? "" : "black",
         radius: details.radius || selectedObject.radius,
         stroke: details.stroke || selectedObject.stroke,
         textBackgroundColor: details.textBackgroundColor || selectedObject.textBackgroundColor,
