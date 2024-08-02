@@ -99,13 +99,26 @@ const CanvasComponent = () => {
     updateObjectDetails();
   }, [details]);
 
+  const getRandomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
   const AddReactangle = () => {
     const rect = new fabric.Rect({
-      top: 200,
-      left: 350,
-      fill: "red",
-      width: 100,
-      height: 50,
+      top: getRandomInt(0, 450), // Ensure it stays within the canvas
+      left: getRandomInt(0, 700), // Ensure it stays within the canvas
+      fill: getRandomColor(),
+      width: getRandomInt(50, 150), // Random width
+      height: getRandomInt(30, 100), // Random height
     });
 
     fabricCanvasRef.current.add(rect);
@@ -113,51 +126,49 @@ const CanvasComponent = () => {
 
   const AddCircle = () => {
     const circle = new fabric.Circle({
-      radius: 20,
-      fill: "green",
-      top: 200,
-      left: 350,
+      radius: getRandomInt(10, 50), // Random radius
+      fill: getRandomColor(),
+      top: getRandomInt(0, 450), // Ensure it stays within the canvas
+      left: getRandomInt(0, 700), // Ensure it stays within the canvas
     });
     fabricCanvasRef.current.add(circle);
   };
 
   const AddPath = () => {
     const path = new fabric.Path("M 0 0 L 300 100 L 200 300 z", {
-      fill: "yellow",
-      stroke: "black",
+      fill: getRandomColor(),
+      stroke: getRandomColor(),
       strokeWidth: 1,
-      top: 200,
-      left: 350,
+      top: getRandomInt(0, 450), // Ensure it stays within the canvas
+      left: getRandomInt(0, 700), // Ensure it stays within the canvas
     });
     fabricCanvasRef.current.add(path);
   };
 
   const AddText = () => {
-    const text = new fabric.FabricText("Hello fabric.js", {
-      fill: "blue",
-      fontSize: 24,
-      top: 200,
-      left: 350,
-      textBackgroundColor: "lightgray",
+    const text = new fabric.Text("Hello fabric.js", {
+      fill: getRandomColor(),
+      fontSize: getRandomInt(16, 40), // Random font size
+      top: getRandomInt(0, 450), // Ensure it stays within the canvas
+      left: getRandomInt(0, 700), // Ensure it stays within the canvas
+      textBackgroundColor: getRandomColor(),
     });
     fabricCanvasRef.current.add(text);
   };
 
   const AddImage = () => {
-    var crossImg = new Image();
+    const crossImg = new Image();
     crossImg.onload = function () {
-      var cross = new fabric.FabricImage(crossImg, {
-        left: 300,
-        top: 150,
-        scaleX: 1,
-        scaleY: 1,
+      const cross = new fabric.Image(crossImg, {
+        left: getRandomInt(0, 700), // Ensure it stays within the canvas
+        top: getRandomInt(0, 450), // Ensure it stays within the canvas
+        scaleX: Math.random() * 2, // Random scale
+        scaleY: Math.random() * 2, // Random scale
       });
       fabricCanvasRef.current.add(cross);
     };
-    crossImg.src =
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDrKL3RBmogp-LQGw48bJ6KHjMgjWwmLFpcQ&s";
+    crossImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDrKL3RBmogp-LQGw48bJ6KHjMgjWwmLFpcQ&s";
   };
-
   const ClearCanvas = () => {
     fabricCanvasRef.current.clear();
     setSelectedObject(null);
