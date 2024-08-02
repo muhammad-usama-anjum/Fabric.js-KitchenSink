@@ -90,6 +90,7 @@ const CanvasComponent = () => {
         textBackgroundColor: details.textBackgroundColor || selectedObject.textBackgroundColor,
         fontSize: details.fontSize
       });
+      selectedObject.setCoords();
       fabricCanvasRef.current.renderAll();
     }
   };
