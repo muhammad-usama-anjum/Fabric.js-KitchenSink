@@ -140,7 +140,7 @@ const CanvasComponent = () => {
         radius: newRadius
       }));
     });
-    
+
     fabricCanvasRef.current.add(circle);
   };
 
@@ -300,6 +300,7 @@ const CanvasComponent = () => {
                 />
               </label>
             )}
+             {selectedObject.type != 'image' && (
               <label>
                 Fill:
                 <input
@@ -309,6 +310,7 @@ const CanvasComponent = () => {
                   onChange={handleInputChange}
                 />
               </label>
+               )}
           </div>
         )}
       </div>
