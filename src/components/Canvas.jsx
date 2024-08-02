@@ -132,6 +132,15 @@ const CanvasComponent = () => {
       top: getRandomInt(0, 450), // Ensure it stays within the canvas
       left: getRandomInt(0, 700), // Ensure it stays within the canvas
     });
+
+    circle.on('scaling', () => {
+      const newRadius = (circle.width / 2) * circle.scaleX;
+      setDetails((prevDetails) => ({
+        ...prevDetails,
+        radius: newRadius
+      }));
+    });
+    
     fabricCanvasRef.current.add(circle);
   };
 
