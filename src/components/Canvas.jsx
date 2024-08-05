@@ -218,7 +218,7 @@ const CanvasComponent = () => {
         {selectedObject && (
           <div className="details">
             <h3>Selected Object Details</h3>
-            {selectedObject.type === 'rect' && (
+            {selectedObject.type === 'rect' || selectedObject.type === 'image' && (
             <label>
               Width:
               <input
@@ -229,7 +229,7 @@ const CanvasComponent = () => {
               />
             </label>
             )}
-              {selectedObject.type === 'rect' && (
+              {selectedObject.type === 'rect' || selectedObject.type === 'image' && (
             <label>
               Height:
               <input
