@@ -158,16 +158,17 @@ const CanvasComponent = () => {
   };
 
   const AddText = () => {
-    const text = new fabric.FabricText("Hello fabric.js", {
+    const text = new fabric.IText("Hello fabric.js", {
       fill: getRandomColor(),
-      fontSize: getRandomInt(16, 40), // Random font size
-      top: getRandomInt(0, 450), // Ensure it stays within the canvas
-      left: getRandomInt(0, 700), // Ensure it stays within the canvas
+      fontSize: getRandomInt(16, 40),
+      top: getRandomInt(0, 450),
+      left: getRandomInt(0, 700),
       textBackgroundColor: getRandomColor(),
     });
     fabricCanvasRef.current.add(text);
   };
 
+  
   const AddImage = () => {
     const crossImg = new Image();
     crossImg.onload = function () {
